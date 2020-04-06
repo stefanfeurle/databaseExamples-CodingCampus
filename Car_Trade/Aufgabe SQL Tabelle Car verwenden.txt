@@ -1,0 +1,12 @@
+1.INSERT INTO `car`(`brand`, `model`, `features`, `year`, `color`, `serial_number`, `price`, `sold`) VALUES ('KIA','ceed 1.4 TGDI','Silver',2019,'black','KC12345',20400,FALSE);
+  INSERT INTO `car`(`brand`, `model`, `features`, `year`, `color`, `serial_number`, `price`, `sold`) VALUES ('KIA','ceed 1.4 MPI','Gold',2019,'white','KC12356',17780,FALSE)
+2.SELECT * FROM `car`
+3.UPDATE `car` SET `color`='gray',`price`=20500 WHERE id=1
+4.SELECT * FROM `car`   (Wo ist der Unterschied zu:  SELECT * FROM `car` WHERE 1)??
+5.INSERT INTO `car`(`brand`, `model`, `features`, `year`, `color`, `serial_number`, `price`, `sold`) VALUES ('KIA','Niro 1.6 GDI GPF Hybrid','Silver',2020,'black','KC12374',28880,FALSE);
+  INSERT INTO `car`(`brand`, `model`, `features`, `year`, `color`, `serial_number`, `price`, `sold`) VALUES ('KIA','Optima Wagon 1.6 CRDi SCR GT-Line','Platin',2019,'blue','KW12458',38840,FALSE);
+  INSERT INTO `car`(`brand`, `model`, `features`, `year`, `color`, `serial_number`, `price`, `sold`) VALUES ('KIA','Picanto 1.0 MPI','Titan',2020,'gray','KP12135',10290,FALSE)
+6.SELECT * FROM `car`
+7.DELETE FROM `car` WHERE id=1
+8.SELECT * FROM `car`
+9.DELETE FROM car 

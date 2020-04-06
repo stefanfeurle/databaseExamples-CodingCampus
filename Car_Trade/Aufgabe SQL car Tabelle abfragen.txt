@@ -1,0 +1,20 @@
+1.SELECT COUNT(*) FROM car WHERE color='black'
+  Ergebnis: 17
+2.SELECT COUNT(*) FROM car WHERE color='black' AND model='golf'
+  Ergebnis: 4
+3.SELECT SUM(price) FROM `car` WHERE year=2018
+  Ergebnis: 328000
+4.SELECT year,SUM(price) FROM `car` GROUP BY year ORDER BY SUM(price) DESC
+  Ergebnis: 2019 604000
+  (Wäre es möglich auch nur 2019 anzuzeigen?
+5.? was ist das günstigste Auto? (Preis oder welches Auto)
+a)Auto:
+  SELECT * FROM `car` ORDER BY price
+  Ergebnis: VW Gof 2017 black X2265 24000
+  (Wäre es möglich auch nur dieses Auto anzuzeigen)
+  zB.: 1.SELECT MIN(price) FROM `car` 2.SELECT * from `car` WHERE price=24000 / oder geht dies auch in einer Anweisung)
+  Preis:
+  SELECT MIN(price) FROM car  
+  Ergebnis:  24000
+6.SELECT MAX(price)-MIN(price) FROM car  
+  Ergebnis:  32000

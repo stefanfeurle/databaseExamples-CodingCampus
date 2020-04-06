@@ -1,0 +1,28 @@
+3.  INSERT INTO `warehouse`(`article_name`, `rack_number`, `buying_price`, `selling_price`, `amount`, `deliverer_id`) 
+    VALUES ('Bildschirm Asus VS228NE', 3,53.99,87.90,11,6),
+    ('Bildschirm ACER KA220HQbid', 3, 64.99,99.99,7,6),
+    ('Bildschirm Samsung C24F396FHU', 3,79.99,149.95,9,6);
+
+4.1 UPDATE warehouse SET amount=amount-2 WHERE article_name LIKE '%sneak%';
+4.2 UPDATE warehouse SET amount=amount-11 WHERE article_name = 'Regenschirm BayWa'
+4.3 UPDATE warehouse SET amount=amount-20 WHERE article_name LIKE 'Fahrradh%'
+4.4 UPDATE warehouse SET rack_number=5 WHERE rack_number=17 
+4.5 UPDATE warehouse SET rack_number=17 WHERE buying_price>50
+4.6 UPDATE warehouse SET rack_number=4 WHERE selling_price<30
+4.7 UPDATE warehouse set amount=200 WHERE article_name='Canon Druckerpatronen'
+4.8 UPDATE warehouse set amount=80 WHERE article_name LIKE'%Mammut'
+4.9 UPDATE warehouse SET rack_number=14 WHERE article_name LIKE '%Tablet%'
+4.10 UPDATE warehouse SET amount=amount-1 WHERE article_name LIKE 'HP Tab%' 
+
+5.1 SELECT * FROM `warehouse` WHERE rack_number=14
+5.2 SELECT * FROM `warehouse` WHERE selling_price<60
+5.3 SELECT * FROM `warehouse` WHERE rack_number=14 ORDER BY article_name
+5.4 SELECT article_name, buying_price FROM `warehouse` WHERE buying_price>50 order by buying_price DESC
+5.5 SELECT article_name, selling_price FROM `warehouse` WHERE article_name LIKE '%Regenschirm%'
+5.6 SELECT sum(buying_price) / count(*) FROM `warehouse`
+    SELECT avg(buying_price) FROM warehouse
+ 
+    SELECT sum(buying_price * amount) / sum(amount) FROM `warehouse`     
+5.7 SELECT article_name,buying_price*amount FROM `warehouse` WHERE deliverer_id = 3
+    SELECT sum(buying_price*amount) FROM `warehouse` WHERE deliverer_id=3
+5.8 SELECT sum((selling_price-buying_price) * amount) FROM `warehouse` WHERE deliverer_id = 3

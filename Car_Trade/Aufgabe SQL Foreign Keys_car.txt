@@ -1,0 +1,15 @@
+1. CREATE TABLE engine (
+    id int(11) AUTO_INCREMENT,
+    horsepower int(11),
+    fuel varchar(20),
+    PRIMARY KEY (id)
+    )
+2. ALTER TABLE car ADD COLUMN engine_id int(11)
+3. ALTER TABLE car MODIFY column features varchar(250)
+4. CREATE INDEX ix_engine_id ON car (engine_id);
+5. ALTER TABLE car add FOREIGN KEY (engine_id) REFERENCES engine(id)
+6. UPDATE `car` SET `engine_id` = 2  WHERE `car`.`id` = 10;
+   UPDATE `car` SET `engine_id` = 1  WHERE `car`.`id` = 41;
+7. SELECT car.brand, car.model, engine.horsepower, engine.fuel FROM car LEFT JOIN engine ON car.engine_id = engine.id
+8. ALTER TABLE car ADD UNIQUE(engine_id)
+9. SELECT car.brand, car.model, engine.horsepower, engine.fuel FROM car INNER JOIN engine ON car.engine_id = engine.id
