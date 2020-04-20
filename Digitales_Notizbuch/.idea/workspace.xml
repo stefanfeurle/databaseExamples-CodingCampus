@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f29322bf-465c-4685-8b8e-f65b1cf251de" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Chat/out/production/Chat/com/company/Chat.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Chat/out/production/Chat/com/company/Chat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chat/out/production/Chat/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Chat/out/production/Chat/com/company/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cinema/src/com/company/Cinema.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cinema/src/com/company/Cinema.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

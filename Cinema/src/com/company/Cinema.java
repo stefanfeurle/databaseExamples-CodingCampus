@@ -350,7 +350,6 @@ public class Cinema {
                         statement = connection.createStatement();
                         statement.executeUpdate(sql);
                         statement.close();
-
                     } else {
                         i--;
                         System.out.println("Falsche Eingabe! Entweder ist der Platz besetzt oder nicht vorhanden!");
@@ -377,16 +376,18 @@ public class Cinema {
     public void cancelOrder(int customerOrderId) {
         try {
             int orderId = customerOrderId - changeOrderNumber;
-            String sql = "update ticket_order set is_cancelled = 1 where id = " + orderId;
+            String sql = "update ticket_order set is_cancelled = 1 " +
+                    "where id = " + orderId + " and customer_username = '" + userName + "';";
             statement = connection.createStatement();
-            statement.executeUpdate(sql);
+            int update = statement.executeUpdate(sql);
             statement.close();
 
-            sql = "UPDATE `seats` SET is_free = 1 WHERE ticket_order_id = " + orderId;
-            statement = connection.createStatement();
-            statement.executeUpdate(sql);
-            statement.close();
-
+            if (update == 1) {
+                sql = "UPDATE `seats` SET is_free = 1 WHERE ticket_order_id = " + orderId;
+                statement = connection.createStatement();
+                statement.executeUpdate(sql);
+                statement.close();
+            }
         }catch(SQLException ex){
             ex.printStackTrace();
         }finally {
@@ -398,9 +399,6 @@ public class Cinema {
                 ex.printStackTrace();
             }
         }
-
-
-
     }
 
     public void printOrder(int customerOrderId) {
@@ -449,6 +447,7 @@ public class Cinema {
              }
          }
     }
+
     public void printOrders() {
         boolean isHeadlinePrinted = false;
 
