@@ -2,8 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f29322bf-465c-4685-8b8e-f65b1cf251de" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../gastronomy/.idea/artifacts/gastronomy_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gastronomy/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gastronomy/src/com/tsf/Gastro.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gastronomy/src/com/tsf/database/DbConnector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gastronomy/src/com/tsf/database/models/Ingredient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gastronomy/src/com/tsf/database/models/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gastronomy/src/com/tsf/database/models/Restaurant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gastronomy/src/com/tsf/database/repositories/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cinema/out/production/Cinema/com/company/Cinema.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cinema/out/production/Cinema/com/company/Cinema.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cinema/src/com/company/Cinema.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cinema/src/com/company/Cinema.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gastronomy/out/production/gastronomy/com/company/Gastro.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gastronomy/out/production/gastronomy/com/company/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gastronomy/src/com/company/Gastro.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gastronomy/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gastronomy/src/com/tsf/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

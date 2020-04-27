@@ -344,7 +344,7 @@ public class Cinema {
                             }
                             statement.close();
                         }
-                        sql = "Update seats set is_free = 0, ticket_order_id = " + orderId + " where cinema_screening_id = ";
+                        sql = "Update seats set is_free = false, ticket_order_id = " + orderId + " where cinema_screening_id = ";
                         sql += cinemaScreeningIdOfInterest + " and id = " + seatNumber;
 
                         statement = connection.createStatement();
