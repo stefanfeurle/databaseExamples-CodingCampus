@@ -2,16 +2,16 @@ package com.tsf.database.repositories;
 
 import com.tsf.database.DbConnector;
 import com.tsf.database.models.Restaurant;
-
-import java.sql.DriverManager;
+import com.tsf.view.RestaurantView;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class RestaurantRepository {
     private DbConnector dbConnector;
+    private RestaurantView restaurantView;
 
-    public RestaurantRepository() {
+    public RestaurantRepository(RestaurantView restaurantView) {
+        this.restaurantView = restaurantView;
         this.dbConnector = DbConnector.getInstance();
     }
 
@@ -20,7 +20,7 @@ public class RestaurantRepository {
                 userName + "' and password = '" + password + "';");
          Restaurant restaurant = null;
         if (resultSet == null) {
-            System.out.println("\nFalscher Username oder Passwort\n");
+            restaurantView.printOutput("\nFalscher Username oder Passwort\n");
             return null;
         }
         try {
@@ -43,7 +43,7 @@ public class RestaurantRepository {
                         phoneNumber, postCode, town, street, houseNumber, passWord, creationDate + " " + creationTime);
             }
         } catch (SQLException ex) {
-            System.out.println("Error while parsing restaurant");
+            restaurantView.printOutput("Error while parsing restaurant");
             ex.printStackTrace();
         } finally {
             dbConnector.closeConnection();
@@ -60,6 +60,20 @@ public class RestaurantRepository {
                 "', '" + kindOfRestaurant + "', '" + name + "', '" + email + "', '" + homepage + "', '" + phoneNumber +
                 "', " + postCode + ", '" + town + "', '" + street + "', " + houseNumber + ", '" + password + "');";
         return dbConnector.insertData(sql);
+    }
+
+
+    public void update(Restaurant restaurant) {
+        String sql = "Update restaurant set kind_of_restaurant = '" + restaurant.getKindOfRestaurant() + "', name = '" +
+                restaurant.getName() + "', email = '" + restaurant.getEmail() + "', homepage = '" +
+                restaurant.getHomepage() + "', phone_number = '" + restaurant.getPhoneNumber() + "', post_code = " +
+                restaurant.getPostCode() + ", town = '" + restaurant.getTown() + "', street = '" +
+                restaurant.getStreet() + "', house_number = " + restaurant.getHouseNumber() + ", password = '" +
+                restaurant.getPassword() + "' where company_book_number = '" + restaurant.getCompanyBookNumber() + "';";
+        boolean wasUpdate = dbConnector.updateData(sql);
+        if (!wasUpdate) {
+            restaurantView.printOutput("Update of Restaurant failed!");
+        }
     }
 }
 

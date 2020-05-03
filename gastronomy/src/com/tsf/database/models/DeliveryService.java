@@ -47,4 +47,24 @@ public class DeliveryService {
     public String getCompanyBookNumber() {
         return companyBookNumber;
     }
+
+    public void setTown(String town) {
+        this.town = town;
+    }
+
+    public void setMinimumOrderValue(double minimumOrderValue) {
+        this.minimumOrderValue = minimumOrderValue;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setDiscountOrderValue(double discountOrderValue) {
+        this.discountOrderValue = discountOrderValue;
+    }
+
+    public void setDiscountPrice(double discountPrice) {
+        this.discountPrice = discountPrice;
+    }
 }

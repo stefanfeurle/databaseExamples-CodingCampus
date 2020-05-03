@@ -24,4 +24,40 @@ public class Ingredient {
         this.isAddable = isAddable;
         this.menuId = menuId;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public boolean isRemovable() {
+        return isRemovable;
+    }
+
+    public boolean isAddable() {
+        return isAddable;
+    }
+
+    public int getMenuId() {
+        return menuId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setMenuId(int menuId) {
+        this.menuId = menuId;
+    }
 }

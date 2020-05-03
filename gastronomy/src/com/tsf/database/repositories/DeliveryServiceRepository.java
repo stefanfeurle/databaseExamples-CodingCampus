@@ -3,7 +3,7 @@ package com.tsf.database.repositories;
 import com.tsf.database.DbConnector;
 import com.tsf.database.models.DeliveryService;
 import com.tsf.database.models.Restaurant;
-
+import com.tsf.view.DeliveryServiceView;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,15 +12,15 @@ public class DeliveryServiceRepository implements Repository<DeliveryService> {
     private DbConnector dbConnector = DbConnector.getInstance();
     private ArrayList<DeliveryService> deliveryTowns = new ArrayList<>();
     private Restaurant restaurant;
+    private DeliveryServiceView deliveryServiceView;
 
-    public DeliveryServiceRepository(Restaurant restaurant) {
+    public DeliveryServiceRepository(Restaurant restaurant, DeliveryServiceView deliveryServiceView) {
         this.restaurant = restaurant;
+        this.deliveryServiceView = deliveryServiceView;
     }
 
-    @Override
-    public DeliveryService findOne(String key) {
-        return null;
-    }
+    //@Override
+    //public DeliveryService findOne(String key) { return null;}
 
     @Override
     public void create(DeliveryService entity) {
@@ -31,12 +31,31 @@ public class DeliveryServiceRepository implements Repository<DeliveryService> {
                 ", " + entity.getDiscountPrice() + ", '" : "'") + restaurant.getCompanyBookNumber() + "');";
         boolean wasInsert = dbConnector.insertData(sql);
         if (!wasInsert) {
-            System.out.println("Insert of KindOfMenu failed!");
+            deliveryServiceView.printOutput("Insert of Delivery Service failed!");
         }
     }
 
     @Override
     public void update(DeliveryService entity) {
+        String sql = "Update delivery set  town = '" + entity.getTown() + "', minimum_order_value = " +
+                entity.getMinimumOrderValue() + ", price = " + entity.getPrice() +
+                (entity.getDiscountOrderValue() > 0 ? ", discount_order_value = " + entity.getDiscountOrderValue() +
+                        ", discount_price = " + entity.getDiscountPrice() : "")  + " where company_book_number_restaurant = '" +
+                entity.getCompanyBookNumber() + "' and post_code = " + entity.getPostcode();
+        boolean wasUpdate = dbConnector.updateData(sql);
+        if (!wasUpdate) {
+            deliveryServiceView.printOutput("Update of Delivery Service failed!");
+        }
+
+    }
+
+    @Override
+    public void delete(DeliveryService entity) {
+        String sql = "Delete from delivery where post_code = " + entity.getPostcode() + " and town = '" + entity.getTown() + "';";
+        boolean wasDelete = dbConnector.deleteData(sql);
+        if (!wasDelete) {
+            deliveryServiceView.printOutput("Delete of Delivery Service failed!");
+        }
 
     }
 
@@ -45,7 +64,7 @@ public class DeliveryServiceRepository implements Repository<DeliveryService> {
         String sql = "Select * from delivery where company_book_number_restaurant = '" + restaurant.getCompanyBookNumber() + "';";
         ResultSet resultSet = dbConnector.selectData(sql);
         if (resultSet == null) {
-            System.out.println("Could not select delivery");
+            deliveryServiceView.printOutput("Could not select delivery");
         }
         try {
             while (resultSet.next()) {
@@ -60,7 +79,7 @@ public class DeliveryServiceRepository implements Repository<DeliveryService> {
                 deliveryTowns.add(new DeliveryService(postcode, town, minimumOrderValue, price, discountOrderValue, discountPrice,companyBookNumberRestaurant));
             }
         } catch (SQLException ex) {
-            System.out.println("Error while parsing delivery towns");
+            deliveryServiceView.printOutput("Error while parsing delivery towns");
             ex.printStackTrace();
         } finally {
             dbConnector.closeConnection();

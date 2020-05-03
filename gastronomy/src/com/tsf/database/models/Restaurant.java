@@ -1,7 +1,5 @@
 package com.tsf.database.models;
 
-import com.tsf.database.DbConnector;
-
 public class Restaurant {
     private String companyBookNumber;
     private String kindOfRestaurant;
@@ -92,5 +90,45 @@ public class Restaurant {
 
     public String getCreationDate() {
         return creationDate;
+    }
+
+    public void setKindOfRestaurant(String kindOfRestaurant) {
+        this.kindOfRestaurant = kindOfRestaurant;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setHomepage(String homepage) {
+        this.homepage = homepage;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setPostCode(int postCode) {
+        this.postCode = postCode;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setHouseNumber(int houseNumber) {
+        this.houseNumber = houseNumber;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

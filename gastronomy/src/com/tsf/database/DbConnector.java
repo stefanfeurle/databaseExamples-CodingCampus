@@ -1,11 +1,13 @@
 package com.tsf.database;
 
+import com.tsf.view.RestaurantView;
 import java.sql.*;
 
 public class DbConnector {
     private Connection connection = null;
     private Statement statement = null;
     private static final String url = "jdbc:mysql://localhost:3306/gastronomy?user=root";
+    RestaurantView restaurantView = new RestaurantView();
 
     private static DbConnector instance = null;
     private DbConnector() {}
@@ -22,7 +24,7 @@ public class DbConnector {
             connection = DriverManager.getConnection(url);
             statement = connection.createStatement();
         } catch (SQLException ex) {
-            System.out.println("Could not build connection!");
+            restaurantView.printOutput("Could not build connection!");
             ex.printStackTrace();
         }
     }
@@ -36,7 +38,7 @@ public class DbConnector {
                 connection.close();
             }
         } catch (SQLException ex) {
-            System.out.println("Could not close connection!");
+            restaurantView.printOutput("Could not close connection!");
             ex.printStackTrace();
         }
     }
@@ -45,11 +47,14 @@ public class DbConnector {
         buildConnection();
         try {
             int result = statement.executeUpdate(sql);
-            System.out.println(result == 1 ? "Delete successful (update your data)" : "No matching entry found");
-            if (result == 1)  {return true;
-            } else {return false;            }
+            if (result == 1)  {
+                restaurantView.printOutput("Delete successful (update your data)");
+                return true;
+            } else {
+                restaurantView.printOutput("No matching entry found");
+                return false;            }
         } catch (SQLException ex) {
-            System.out.println("Delete failed!");
+            restaurantView.printOutput("Delete failed!");
             ex.printStackTrace();
             return false;
         } finally {
@@ -61,14 +66,15 @@ public class DbConnector {
         buildConnection();
         try {
             int result = statement.executeUpdate(sql);
-            System.out.println(result == 1 ? "Insert of new data successful" : "Insert failed");
             if (result == 1) {
+                restaurantView.printOutput("Insert of new data successful (update your data)");
                 return true;
             } else {
+                restaurantView.printOutput("Insert failed");
                 return false;
             }
         } catch (SQLException ex) {
-            System.out.println("Insert failed");
+            restaurantView.printOutput("Insert failed");
             ex.printStackTrace();
             return false;
         } finally {
@@ -80,14 +86,15 @@ public class DbConnector {
         buildConnection();
         try {
             int result = statement.executeUpdate(sql);
-            System.out.println(result == 1 ? "Update of data successful (update your data)" : "Update failed");
             if (result == 1) {
+                restaurantView.printOutput("Update of data successful (update your data)");
                 return true;
             } else {
+                restaurantView.printOutput("Update failed");
                 return false;
             }
         } catch (SQLException ex) {
-            System.out.println("Update failed");
+            restaurantView.printOutput("Update failed");
             ex.printStackTrace();
             return false;
         } finally {
@@ -100,7 +107,7 @@ public class DbConnector {
         try {
             return statement.executeQuery(sql);
         } catch (SQLException ex) {
-            System.out.println("Could not selcect data!");
+            restaurantView.printOutput("Could not selcect data!");
             ex.printStackTrace();
             closeConnection();
         }
