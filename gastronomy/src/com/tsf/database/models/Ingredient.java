@@ -56,8 +56,4 @@ public class Ingredient {
     public void setPrice(double price) {
         this.price = price;
     }
-
-    public void setMenuId(int menuId) {
-        this.menuId = menuId;
-    }
 }
